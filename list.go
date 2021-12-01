@@ -1,3 +1,8 @@
+// BSD 2-Clause License
+
+// Copyright (c) 2021, Mark-Labuschagne
+// All rights reserved.
+
 package linkedList
 
 import (
