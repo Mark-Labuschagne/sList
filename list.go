@@ -63,6 +63,7 @@ func (l *List) Insert(d interface{}) error {
 	return nil
 }
 
+// Display the entries in the list.
 func (l *List) Display() error {
 	err := l.checkEmpty()
 	if err != nil {
@@ -160,8 +161,8 @@ func (l *List) RemoveDuplicates() error {
 }
 
 var (
-	Curr   *Node
-	Called bool
+	currN  *Node
+	called bool
 )
 
 /*
@@ -173,25 +174,25 @@ Usage:
 	}
 */
 func (l List) Range() (end bool, val interface{}) {
-	if !Called {
+	if !called {
 		if l.checkEmpty() != nil {
 			return true, nil
 		}
 
-		Curr = l.Head
-		Called = true
+		currN = l.Head
+		called = true
 	} else {
-		if Curr.Next == nil {
-			Curr = &Node{}
-			Called = false
+		if currN.Next == nil {
+			currN = &Node{}
+			called = false
 
-			return true, Curr.Data
+			return true, currN.Data
 		}
 
-		Curr = Curr.Next
+		currN = currN.Next
 	}
 
-	return false, Curr.Data
+	return false, currN.Data
 }
 
 func (l List) checkEmpty() error {
